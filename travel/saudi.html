@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Saudi Arabia — Taheer Jahan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/reset.css"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body data-country="saudi">
+  <nav id="navbar">
+    <a class="nav-logo" href="../index.html">Taheer Jahan</a>
+    <button class="nav-burger" id="burger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#gallery">Gallery</a></li>
+      <li><a href="../index.html#portraits">Portraits</a></li>
+      <li><a href="../index.html#travel" class="active-link">Travel</a></li>
+      <li><a href="../index.html#videos">Videos</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+  </nav>
+
+  <a href="../index.html#travel" class="back-link">All Countries</a>
+
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="" alt="Saudi Arabia" id="heroImg"/><div class="page-hero-overlay"></div></div>
+    <div class="page-hero-content">
+      <p class="eyebrow light">&#127480;&#127462; Saudi Arabia</p>
+      <h1 class="page-hero-title">Holy <em>Light</em></h1>
+      <p class="page-hero-desc">A land of ancient history, breathtaking desert and spiritual energy unlike anywhere else.</p>
+    </div>
+  </section>
+
+  <div class="country-info-strip">
+    <div class="cis-item"><p class="cis-label">Country</p><p class="cis-value">Saudi Arabia</p></div>
+    <div class="cis-item"><p class="cis-label">Cities</p><p class="cis-value">Riyadh, Jeddah</p></div>
+    <div class="cis-item"><p class="cis-label">Region</p><p class="cis-value">Middle East</p></div>
+    <div class="cis-item"><p class="cis-label">Photos</p><p class="cis-value" id="photoBadge">Loading...</p></div>
+  </div>
+
+  <section class="page-section">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem;">
+      <div>
+        <p class="eyebrow">Gallery</p>
+        <h2 style="font-family:var(--ff-disp);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;">Saudi Arabia <em style="font-style:italic;color:var(--gold);">Photos</em></h2>
+      </div>
+      <div class="filter-bar" id="travelFilterBar" style="justify-content:flex-end;">
+        <button class="filter-btn active" data-filter="all">All</button>
+      </div>
+    </div>
+    <div class="page-masonry masonry" id="photoGrid"></div>
+  </section>
+
+  <div class="page-section warm">
+    <div class="page-inner">
+      <p class="eyebrow">Highlights</p>
+      <h2 style="font-family:var(--ff-disp);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;margin-bottom:2rem;">Favourite <em style="font-style:italic;color:var(--gold);">Shots</em></h2>
+      <div class="h-strip" id="highlightStrip"></div>
+    </div>
+  </div>
+
+  <div class="next-country">
+    <div>
+      <p class="next-lbl">Next destination</p>
+      <a href="singapore.html" class="next-name">Singapore <em>&#8594;</em></a>
+    </div>
+    <a href="../index.html#travel" class="btn-primary">All Countries</a>
+  </div>
+
+  <footer>
+    <p class="footer-logo">Taheer Jahan</p>
+    <p class="footer-copy">&copy; 2026 All rights reserved.</p>
+    <a href="https://www.instagram.com/taheer_jahan/" target="_blank" class="footer-ig">@taheer_jahan</a>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose">&times;</button>
+    <button class="lb-prev" id="lbPrev">&#8592;</button>
+    <button class="lb-next" id="lbNext">&#8594;</button>
+    <div class="lb-img-wrap"><img id="lbImg" src="" alt=""/></div>
+    <div class="lb-caption"><p id="lbTitle"></p><p id="lbLoc"></p></div>
+  </div>
+
+  <script src="../js/photos.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/travel.js"></script>
+</body>
+</html>
