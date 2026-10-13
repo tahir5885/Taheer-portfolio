@@ -61,7 +61,7 @@ function renderFeaturedWork() {
   container.innerHTML = items.map(item => `
     <div class="featured-card ${item.span}">
       <div class="featured-img-wrap">
-        <img src="${item.img}" alt="${item.title}" class="featured-img" loading="lazy">
+        <img src="${item.img}" alt="${item.title} — ${item.cat} by Taheer Jahan" class="featured-img" loading="lazy">
         <div class="featured-content">
           <span class="featured-cat">${item.cat}</span>
           <h3 class="featured-title">${item.title}</h3>
@@ -93,7 +93,7 @@ function renderGallery() {
 
     galleryGrid.innerHTML = filtered.map((photo, idx) => `
       <div class="gallery-item ${photo.cat === 'landscape' ? 'landscape' : ''}" data-index="${idx}">
-        <img src="${photo.src}" alt="${photo.title}" class="gallery-img" loading="lazy">
+        <img src="${photo.src}" alt="${photo.title} — Travel Photography in ${photo.loc} by Taheer Jahan" class="gallery-img" loading="lazy">
         <span class="item-badge">${photo.cat}</span>
         <div class="gallery-overlay">
           <h4 class="item-title">${photo.title}</h4>
@@ -167,7 +167,11 @@ function updateLightboxContent() {
   const item = activePhotosList[currentLbIndex];
   if (!item) return;
 
-  document.getElementById('lbImg').src = item.src;
+  const lbImg = document.getElementById('lbImg');
+  if (lbImg) {
+    lbImg.src = item.src;
+    lbImg.alt = `${item.title || 'Travel Photo'} — Photography in ${item.loc || 'Asia & Middle East'} by Taheer Jahan`;
+  }
   document.getElementById('lbTitle').textContent = item.title || 'Untitled Story';
   document.getElementById('lbLoc').textContent = item.loc ? `📍 ${item.loc}` : '';
   document.getElementById('lbExif').textContent = item.camera || 'Sony Alpha Cinema System • RAW Capture';
@@ -220,7 +224,7 @@ function renderCommercial() {
   if (photoGrid && PORTFOLIO_DATA.realEstatePhotos) {
     photoGrid.innerHTML = PORTFOLIO_DATA.realEstatePhotos.map((photo, idx) => `
       <div class="gallery-item" onclick="openCommercialLightbox(${idx})">
-        <img src="${photo.src}" alt="${photo.title}" class="gallery-img" loading="lazy">
+        <img src="${photo.src}" alt="${photo.title} — Real Estate &amp; Architectural Photography in ${photo.loc} by Taheer Jahan" class="gallery-img" loading="lazy">
         <span class="item-badge">Commercial • ${photo.loc}</span>
         <div class="gallery-overlay">
           <h4 class="item-title">${photo.title}</h4>
@@ -362,8 +366,14 @@ function initBeforeAfterSlider() {
     const project = items[idx];
     if (!project) return;
 
-    if (beforeImg) beforeImg.src = project.beforeSrc;
-    if (afterImg) afterImg.src = project.afterSrc;
+    if (beforeImg) {
+      beforeImg.src = project.beforeSrc;
+      beforeImg.alt = `RAW Unedited Original — ${project.title} by Taheer Jahan`;
+    }
+    if (afterImg) {
+      afterImg.src = project.afterSrc;
+      afterImg.alt = `Final Photoshop Retouched Artwork — ${project.title} by Taheer Jahan`;
+    }
     if (beforeLabel) beforeLabel.textContent = project.beforeLabel || 'RAW Capture';
     if (afterLabel) afterLabel.textContent = project.afterLabel || 'Photoshop Final';
 
@@ -402,11 +412,11 @@ function initBeforeAfterSlider() {
         <div class="ps-card-preview" onclick="window.selectPhotoshopProject(${idx}); document.getElementById('photoshop').scrollIntoView({ behavior: 'smooth' });">
           <div class="ps-split-container">
             <div class="ps-split-half left">
-              <img src="${item.beforeSrc}" alt="Before Edit" loading="lazy">
+              <img src="${item.beforeSrc}" alt="Before Digital Retouching — ${item.title} by Taheer Jahan" loading="lazy">
               <span class="ps-mini-label before">Before</span>
             </div>
             <div class="ps-split-half right">
-              <img src="${item.afterSrc}" alt="After Edit" loading="lazy">
+              <img src="${item.afterSrc}" alt="After Digital Retouching — ${item.title} by Taheer Jahan" loading="lazy">
               <span class="ps-mini-label after">After</span>
             </div>
           </div>
@@ -490,7 +500,7 @@ function renderTravelJournals() {
 
   travelGrid.innerHTML = PORTFOLIO_DATA.travelCountries.map(c => `
     <div class="country-card" onclick="showToast('Opening ${c.name} visual travel journal...')">
-      <img src="${c.cover}" alt="${c.name}" class="country-cover" loading="lazy">
+      <img src="${c.cover}" alt="${c.name} — Travel Photography Collection by Taheer Jahan" class="country-cover" loading="lazy">
       <div class="country-overlay">
         <span class="country-flag">${c.flag}</span>
         <h3 class="country-name">${c.name}</h3>

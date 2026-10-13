@@ -15,7 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── Hero cover image ─────────────────────────────────── */
   var heroImg = document.getElementById('heroImg');
-  if (heroImg) heroImg.src = DATA.cover;
+  if (heroImg) {
+    heroImg.src = DATA.cover;
+    heroImg.alt = (DATA.name || country) + ' Travel Photography & Highlights by Taheer Jahan';
+  }
 
   /* ── Photo count badge ───────────────────────────────── */
   var badge = document.getElementById('photoBadge');
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
     d.className = 'card';
     d.dataset.filter = p.cat || 'general';
     d.innerHTML =
-      '<img src="../' + p.src + '" alt="' + (p.title || '') + '" loading="lazy">' +
+      '<img src="../' + p.src + '" alt="' + (p.title ? p.title + ' — Travel Photography in ' + (p.loc || country) + ' by Taheer Jahan' : (p.loc || country) + ' Travel Photography by Taheer Jahan') + '" loading="lazy">' +
       '<div class="card-hover">' +
         '<p class="card-title">' + (p.title || '') + '</p>' +
         '<p class="card-loc">'   + (p.loc   || '') + '</p>' +
@@ -86,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     DATA.photos.slice(0, 8).forEach(function (p, i) {
       var d = document.createElement('div');
       d.className = 'h-strip-item';
-      d.innerHTML = '<img src="../' + p.src + '" alt="' + (p.title || '') + '" loading="lazy">';
+      d.innerHTML = '<img src="../' + p.src + '" alt="' + (p.title ? p.title + ' — Travel Photography Highlight by Taheer Jahan' : 'Travel Photography Highlight by Taheer Jahan') + '" loading="lazy">';
       d.addEventListener('click', function () { openTravelLB(i); });
       strip.appendChild(d);
     });
@@ -109,7 +112,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function showTLB(i) {
     var p = photos[i];
     lbImg.style.opacity = '0';
-    setTimeout(function () { lbImg.src = '../' + p.src; lbT.textContent = p.title || ''; lbL.textContent = p.loc || ''; lbImg.style.opacity = '1'; lbImg.style.transition = 'opacity .2s'; }, 150);
+    setTimeout(function () {
+      lbImg.src = '../' + p.src;
+      lbImg.alt = (p.title ? p.title + ' — ' : '') + (p.loc ? p.loc + ' — ' : '') + 'Travel Photography by Taheer Jahan';
+      lbT.textContent = p.title || '';
+      lbL.textContent = p.loc || '';
+      lbImg.style.opacity = '1';
+      lbImg.style.transition = 'opacity .2s';
+    }, 150);
   }
   function closeTLB() { lb.classList.remove('open'); document.body.style.overflow = ''; }
 
